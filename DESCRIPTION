@@ -1,0 +1,21 @@
+Package: das_descriptions
+Title: A package that provides easy access to information based on guidelines for monitoring seabirds at sea
+Version: 0.0.0.9000
+Authors@R: 
+    person("Miriam", "Lerma", , "miriamjlerma@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: A package that provides easy access to information based on guidelines for monitoring seabirds at sea. Contains a list of 549 species across 9 morphologically distinct groups, with harmonized column names, unified observation descriptions (including abiotic structures, activity codes, and associations), and detailed guidance for data entry. It also includes one example each of a monitoring trip, a survey with survey details, and a survey with detected species.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+URL: https://github.com/MiriamLL/das_descriptions
+BugReports: https://github.com/MiriamLL/das_descriptions/issues
+LazyData: true
+LazyDataCompression: xz
+Depends: R (>= 2.10)
+Imports: 
+    magrittr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
