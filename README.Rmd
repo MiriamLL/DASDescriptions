@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-**das_descriptions** provides easy access to information based on guidelines for monitoring seabirds at sea. 
+**DASDescriptions** provides easy access to information based on guidelines for monitoring seabirds at sea. 
 It includes detailed table content and a sample dataset to support implementation.
 Information based on the HELCOM Monitoring Guidelines for Seabirds at Sea [ESAS database](https://helcom.fi/wp-content/uploads/2021/11/HELCOM-Monitoring-guidelines-for-seabirds-at-sea-monitoring.pdf).
 
@@ -37,7 +37,7 @@ Contains:
 You can install the development version from [GitHub](https://github.com/) with:
 
 ```{r, eval=FALSE, warning=FALSE}
-devtools::install_github("MiriamLL/das_descriptions")
+devtools::install_github("MiriamLL/DASDescriptions")
 ```
 
 ## Start
@@ -45,7 +45,7 @@ devtools::install_github("MiriamLL/das_descriptions")
 Load the package
 
 ```{r}
-library(das_descriptions)
+library(DASDescriptions)
 ```
 
 
@@ -65,7 +65,7 @@ library(tidyverse)
 ```
 
 ```{r}
-das_descriptions::Column_Descriptions %>%
+DASDescriptions::Column_Descriptions %>%
   select(starts_with('Trip'))%>%
   drop_na()%>%
   filter(Trip_Name=='DATE')
@@ -87,7 +87,7 @@ library(tidyverse)
 ```
 
 ```{r}
-das_descriptions::Code_Descriptions %>%
+DASDescriptions::Code_Descriptions %>%
   select(starts_with('ACT'))%>%
   drop_na()
 ```
@@ -184,7 +184,7 @@ data(Basis_test)
 ### Example of use
 
 ```{r}
-das_descriptions::Basis_test %>%
+DASDescriptions::Basis_test %>%
   summarise(GLARE_max=max(GLARE))
 ```
 
@@ -234,7 +234,7 @@ data(Observations_test)
 ### Example of use
 
 ```{r}
-das_descriptions::Observations_test %>%
+DASDescriptions::Observations_test %>%
   drop_na(ENGLISH_NAME)%>%
   group_by(ENGLISH_NAME)%>%
   tally()%>%
@@ -252,7 +252,7 @@ head(Code_Euring)
 ```
 
 ```{r, echo=FALSE, eval=FALSE}
-Code_Euring<-das_descriptions::Code_Euring
+Code_Euring<-DASDescriptions::Code_Euring
 ```
 
 
