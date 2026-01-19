@@ -255,14 +255,13 @@ head(Code_Euring)
 Code_Euring<-DASDescriptions::Code_Euring
 ```
 
-
 ```{r, echo=FALSE, eval=FALSE}
 library(tidyverse)
 
 Code_Euring<-Code_Euring %>%
   mutate(Artificial_tax_class=Groupping)
 
-Code_Euring %>% filter(Groupping=='Gannets_Cormorants') %>% distinct()
+Code_Euring %>% filter(Groupping=='Divers') %>% distinct()
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
@@ -271,12 +270,12 @@ unique(Code_Euring$Groupping)
 
 ```{r, echo=FALSE, eval=FALSE}
 Code_Euring<-Code_Euring %>%
-  mutate(Groupping=case_when(English_name == 'Northern Gannet' ~ "Gannets_Swans",
-                             English_name == 'Mute Swan' ~ "Gannets_Swans",
-                             English_name == 'Bewick’s Swan' ~ "Gannets_Swans",
-                             English_name == 'Whooper Swan' ~ "Gannets_Swans",
-                             English_name == 'Bewick’s Swan/Whooper Swan' ~ "Gannets_Swans",
-                             English_name == 'unidentified swan' ~ "Gannets_Swans",
+  mutate(Groupping=case_when(English_name == 'Northern Gannet' ~ "Gannets",
+                             English_name == 'Mute Swan' ~ "Swans",
+                             English_name == 'Bewick’s Swan' ~ "Swans",
+                             English_name == 'Whooper Swan' ~ "Swans",
+                             English_name == 'Bewick’s Swan/Whooper Swan' ~ "Swans",
+                             English_name == 'unidentified swan' ~ "Swans",
                              English_name == 'Great Cormorant' ~ "Cormorants",
                              English_name == 'North Atlantic Cormorant' ~ "Cormorants",
                              English_name == 'European Shag' ~ "Cormorants",
@@ -296,6 +295,7 @@ Code_Euring<-Code_Euring %>%
                              ))%>%
   relocate(Code,Scientific_name,English_name,Artificial_tax_class,Groupping)
 
+Code_Euring$Artificial_tax_class<-NULL
 ```
 
 **Key fields**: 
@@ -310,7 +310,7 @@ Code_Euring<-Code_Euring %>%
 
 ```{r}
 Code_Euring %>%
-  filter(Groupping=='Gannets_Swans')%>%
+  filter(Groupping=='Swans')%>%
   distinct()
 ```
 

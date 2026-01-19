@@ -1,20 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# seamonas <img src="man/figures/seamonashexsticker.png" align="right" height="200" />
-
 <!-- badges: start -->
 <!-- badges: end -->
 
-**seamonas** provides easy access to information based on guidelines for
-monitoring seabirds at sea. It includes detailed table content and a
-sample dataset to support implementation. Information based on the
-HELCOM Monitoring Guidelines for Seabirds at Sea [ESAS
+**DASDescriptions** provides easy access to information based on
+guidelines for monitoring seabirds at sea. It includes detailed table
+content and a sample dataset to support implementation. Information
+based on the HELCOM Monitoring Guidelines for Seabirds at Sea [ESAS
 database](https://helcom.fi/wp-content/uploads/2021/11/HELCOM-Monitoring-guidelines-for-seabirds-at-sea-monitoring.pdf).
 
 ## About
 
-**seamonas** contains:
+Contains:
 
 - A **list of 549 species** across morphological separated groups.
 - Harmonized **column names** and guidance for completing each entry.
@@ -29,11 +26,11 @@ database](https://helcom.fi/wp-content/uploads/2021/11/HELCOM-Monitoring-guideli
 
 ## Installation
 
-You can install the development version of seamonas from
+You can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
-devtools::install_github("MiriamLL/seamonas")
+devtools::install_github("MiriamLL/DASDescriptions")
 ```
 
 ## Start
@@ -41,12 +38,12 @@ devtools::install_github("MiriamLL/seamonas")
 Load the package
 
 ``` r
-library(seamonas)
+library(DASDescriptions)
 ```
 
 ## Explanations
 
-`seamonas` contains:  
+Contains:  
 - Harmonized **column names** and guidance for completing each entry.
 
 ``` r
@@ -60,7 +57,7 @@ library(tidyverse)
 ```
 
 ``` r
-seamonas::Column_Descriptions %>%
+DASDescriptions::Column_Descriptions %>%
   select(starts_with('Trip'))%>%
   drop_na()%>%
   filter(Trip_Name=='DATE')
@@ -70,7 +67,7 @@ seamonas::Column_Descriptions %>%
 
 ## Descriptions
 
-`seamonas` contains:  
+Contains:  
 - Unified **descriptions** for field entries, includes abiotic
 structures, activity codes, associations.
 
@@ -85,7 +82,7 @@ library(tidyverse)
 ```
 
 ``` r
-seamonas::Code_Descriptions %>%
+DASDescriptions::Code_Descriptions %>%
   select(starts_with('ACT'))%>%
   drop_na()
 #> # A tibble: 6 × 2
@@ -101,7 +98,7 @@ seamonas::Code_Descriptions %>%
 
 ## Trip
 
-`seamonas` contains:  
+contains:  
 - One trip example from a fictional monitoring containing basic **trip**
 information.
 
@@ -189,7 +186,7 @@ data(Trip_test)
 ### Example of use
 
 ``` r
-seamonas::Trip_test %>%
+Trip_test %>%
   select(LAB)
 #>           LAB
 #> 1 CompanyName
@@ -197,7 +194,7 @@ seamonas::Trip_test %>%
 
 ## Basis
 
-`seamonas` contains:  
+Contains:  
 - One survey example from a fictional monitoring containing **survey**
 information.
 
@@ -272,7 +269,7 @@ data(Basis_test)
 ### Example of use
 
 ``` r
-seamonas::Basis_test %>%
+DASDescriptions::Basis_test %>%
   summarise(GLARE_max=max(GLARE))
 #>   GLARE_max
 #> 1         3
@@ -280,7 +277,7 @@ seamonas::Basis_test %>%
 
 ## Observations
 
-`seamonas` contains:  
+Contains:  
 - One survey example from a fictional monitoring containing **species
 detected and specifications**.
 
@@ -377,7 +374,7 @@ data(Observations_test)
 ### Example of use
 
 ``` r
-seamonas::Observations_test %>%
+DASDescriptions::Observations_test %>%
   drop_na(ENGLISH_NAME)%>%
   group_by(ENGLISH_NAME)%>%
   tally()%>%
@@ -393,7 +390,7 @@ seamonas::Observations_test %>%
 
 ## Euring
 
-`seamonas` contains:  
+Contains:  
 - A list of **549** species names across morphological separated groups.
 
 **Key fields**:
@@ -421,35 +418,9 @@ seamonas::Observations_test %>%
 
 ``` r
 Code_Euring %>%
-  filter(Groupping=='Gannets_Swans')%>%
+  filter(Groupping=='Swans')%>%
   distinct()
-#> # A tibble: 6 × 5
-#>   Code  Scientific_name              English_name Artificial_tax_class Groupping
-#>   <chr> <chr>                        <chr>        <chr>                <chr>    
-#> 1 710   Sula bassana                 Northern Ga… Gannets_Swans        Gannets_…
-#> 2 1520  Cygnus olor                  Mute Swan    Geese                Gannets_…
-#> 3 1532  Cygnus bewickii              Bewick’s Sw… Geese                Gannets_…
-#> 4 1540  Cygnus cygnus                Whooper Swan Geese                Gannets_…
-#> 5 1558  Cygnus bewickii / Cygnus cy… Bewick’s Sw… Geese                Gannets_…
-#> 6 1559  Cygnus spec.                 unidentifie… Geese                Gannets_…
+#> # A tibble: 0 × 5
+#> # ℹ 5 variables: Code <chr>, Scientific_name <chr>, English_name <chr>,
+#> #   Artificial_tax_class <chr>, Groupping <chr>
 ```
-
-## Citation
-
-If you use **seamonas** for your research, please consider citing this
-package.
-
-Lerma M, Schwemmer, H (2025). Package seamonas. Access guidelines
-information for monitoring seabirds at sea.
-<https://github.com/MiriamLL/seamonas>
-
-Additional references:
-
-- Kotzerka, J., Markones, N., Dierschke, V., & Auniņš, A. (2021).
-  Guidelines for monitoring seabirds at sea. In Helsinki Commission.
-  <https://helcom.fi/wp-content/uploads/2021/11/HELCOM-Monitoring-guidelines-for-seabirds-at-sea-monitoring.pdf>
-
-- ESAS data model. <https://esas-docs.ices.dk/>
-
-- ICES data portal.
-  <https://www.ices.dk/data/data-portals/Pages/European-Seabirds-at-sea.aspx>
